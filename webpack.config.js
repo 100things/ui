@@ -13,8 +13,11 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js(x|)?$/, include: path.join(__dirname, 'client'),
-                loaders: ['babel-loader?optional=runtime'] }
+            {
+                test: /\.js(x|)?$/,
+                include: path.join(__dirname, 'client'),
+                loaders: ['babel-loader?optional=runtime&stage=1']
+            }
         ]
     },
     resolve: {
