@@ -16,7 +16,7 @@ module.exports = {
             {
                 test: /\.js(x|)?$/,
                 include: path.join(__dirname, 'client'),
-                loaders: ['babel-loader?optional=runtime&stage=1']
+                loaders: ['babel-loader?optional=runtime&stage=0']
             }
         ]
     },

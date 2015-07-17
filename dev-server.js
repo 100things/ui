@@ -12,4 +12,6 @@ server.register({ register: require('./server/index')}, function (err) {
     console.error(err);
 });
 
-server.start();
+server.start(function () {
+    console.log('Server running at:', server.info.uri);
+});

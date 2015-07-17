@@ -1,4 +1,6 @@
-require('babel/register');
+require('babel/register')({
+    stage: 0
+});
 
 var React = require('react');
 var Page = React.createFactory(require('../../client/components/page'));
