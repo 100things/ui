@@ -1,11 +1,16 @@
-import Alt from 'alt';
-import NoteActions from '../actions/NoteActions';
+import alt from '../alt';
+import NoteActions from '../actions/Notes';
 
 class NoteStore {
     constructor() {
         this.bindActions(NoteActions);
 
         this.notes = [];
+    }
+
+    init(data) {
+        console.log(data);
+        this.setState(data && Array.isArray(data.notes) ? data : { notes: [] });
     }
 
     create(task) {
@@ -33,4 +38,4 @@ class NoteStore {
     }
 }
 
-export default Alt.createStore(NoteStore);
+export default alt.createStore(NoteStore);

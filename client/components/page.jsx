@@ -1,38 +1,36 @@
 import React from 'react/addons';
+import AltContainer from 'alt/AltContainer';
 import Notes from './notes';
-import NoteActions from '../actions/NoteActions';
-import NoteStore from '../stores/NoteStore';
+import NoteActions from '../actions/Notes';
+import NoteStore from '../stores/Notes';
+import storage from '../api/local';
+import persist from '../decorators/persist';
 
+const noteStorageName = 'notes';
+
+@persist(storage, noteStorageName, () => NoteStore.getState())
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
 
-        this.storeChanged = this.storeChanged.bind(this);
-        this.state = NoteStore.getState();
-    }
-
-    componentDidMount() {
-        NoteStore.listen(this.storeChanged);
-    }
-
-    componentWillUnmount() {
-        NoteStore.unlisten(this.storeChanged);
-    }
-
-    storeChanged(state) {
-        this.setState(state);
+        NoteActions.init(storage.get(noteStorageName));
     }
 
     render() {
-        var notes = this.state.notes;
+        var notes = this.props.notes;
 
         return (
             <div>
                 <button onClick={() => this.addItem()}>+</button>
-                <Notes
-                    items={this.state.notes}
-                    onEdit={(i, task) => this.itemEdited(i, task)}
-                    onRemove={(i) => this.itemRemove(i)} />
+                <AltContainer
+                    stores={[NoteStore]}
+                    inject={ {
+                        items: () => NoteStore.getState().notes || []
+                    }}>
+                    <Notes
+                        onEdit={(i, task) => this.itemEdited(i, task)}
+                        onRemove={(i) => this.itemRemove(i)} />
+                </AltContainer>
             </div>
         );
     }
