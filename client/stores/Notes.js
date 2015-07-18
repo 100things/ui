@@ -38,4 +38,4 @@ class NoteStore {
     }
 }
 
-export default alt.createStore(NoteStore);
+export default alt.createStore(NoteStore, 'NoteStore');

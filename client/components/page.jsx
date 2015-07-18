@@ -1,19 +1,23 @@
 import React from 'react/addons';
 import AltContainer from 'alt/AltContainer';
+import alt from '../alt';
+
 import Notes from './notes';
 import NoteActions from '../actions/Notes';
 import NoteStore from '../stores/Notes';
-import storage from '../api/local';
+import Lanes from './Lanes';
+import LaneActions from './actions/Lanes';
+import LaneStore from './stores/Lanes';
 import persist from '../decorators/persist';
+import {storage, storageName, getInitialData} from '../api/local';
 
-const noteStorageName = 'notes';
 
-@persist(storage, noteStorageName, () => NoteStore.getState())
+@persist(storage, storageName, () => JSON.parse(alt.takeSnapShot()))
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
 
-        NoteActions.init(storage.get(noteStorageName));
+        LaneActions.init(getInitialData('LaneStore'));
     }
 
     render() {
@@ -21,33 +25,19 @@ export default class Page extends React.Component {
 
         return (
             <div>
-                <button onClick={() => this.addItem()}>+</button>
+                <button onClick={() => this.addLane()}>+</button>
                 <AltContainer
-                    stores={[NoteStore]}
+                    stores={[LaneStore]}
                     inject={ {
-                        items: () => NoteStore.getState().notes || []
+                        items: () => LaneStore.getState().lanes || []
                     }}>
-                    <Notes
-                        onEdit={(i, task) => this.itemEdited(i, task)}
-                        onRemove={(i) => this.itemRemove(i)} />
+                    <Lanes />
                 </AltContainer>
             </div>
         );
     }
 
-    itemEdited(id, task) {
-        if (task) {
-            NoteActions.update({id, task});
-        } else {
-            NoteActions.remove(id);
-        }
-    }
-
-    itemRemove(id) {
-        NoteActions.remove(id);
-    }
-
-    addItem() {
-        NoteActions.create('New Task');
+    addLane() {
+        LaneActions.create('New Lane');
     }
 }
