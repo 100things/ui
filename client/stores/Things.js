@@ -1,21 +1,19 @@
-import alt from '../alt';
-import ThingsActions from '../actions/Things';
-
-class ThingsStore {
-  constructor () {
-    this.bindActions(ThingsActions);
+export default class ThingsStore {
+  constructor (actions) {
+    this.bindActions(actions);
   }
 
   init (data) {
     this.setState(data || { things: [] });
   }
 
-  create (name) {
+  create (name, image) {
     const things = this.things;
 
     this.setState({
       things: things.concat({
-        name: name
+        name: name,
+        image: image
       })
     });
   }
@@ -36,5 +34,3 @@ class ThingsStore {
     });
   }
 }
-
-export default alt.createStore(ThingsStore, 'ThingsStore');

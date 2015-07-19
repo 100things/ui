@@ -7,20 +7,16 @@ const styles = {
 
 @Radium
 export default class List extends React.Component {
-  addThing () {
-
-  }
-  
   render () {
     var things = this.props.things;
 
     return (
       <div>
-        <button onClick={() => this.addThing()}>Add Thing</button>
         <ul style={styles.notes}>{things.map((thing, i) =>
             <Thing
               index={i}
-              thing={thing}
+              key={'thing-' + thing.id}
+              {...thing}
               />
           )}</ul>
         </div>

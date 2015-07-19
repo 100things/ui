@@ -2,8 +2,8 @@ require('babel/register')({
   stage: 0
 });
 
-var React = require('react');
-var Page = React.createFactory(require('../../client/components/page'));
+// var React = require('react');
+// var Page = React.createFactory(require('../../client/components/page'));
 var WEBPACK_DEV = process.env.WEBPACK_DEV === 'true';
 var path = require('path');
 
@@ -23,7 +23,7 @@ exports.index = {
       bundles: {
         js: bundleJs
       },
-      content: React.renderToString(new Page())
+      content: null // React.renderToString(new Page())
     });
   }
 };
