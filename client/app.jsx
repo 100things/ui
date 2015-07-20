@@ -1,5 +1,5 @@
 import React from 'react/addons';
-import Page from './components/Page';
+import Page from './Components/Page';
 
 const rootEl = document.querySelector('.content');
 

@@ -3,7 +3,7 @@ require('babel/register')({
 });
 
 // var React = require('react');
-// var Page = React.createFactory(require('../../client/components/page'));
+// var Page = React.createFactory(require('../../client/Components/Page'));
 var WEBPACK_DEV = process.env.WEBPACK_DEV === 'true';
 var path = require('path');
 

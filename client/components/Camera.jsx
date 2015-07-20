@@ -87,7 +87,9 @@ class Webcam extends React.Component {
       return;
     }
 
+    var video = this.refs.video.getDOMNode();
     var canvas = document.createElement('canvas');
+
     canvas.height = video.clientHeight;
     canvas.width = video.clientWidth;
 
@@ -101,6 +103,7 @@ class Webcam extends React.Component {
     return (
       <video
         autoPlay
+        ref="video"
         width={this.props.width}
         height={this.props.height}
         src={this.state.src}
