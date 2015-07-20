@@ -4,7 +4,7 @@
   "main": "dev-server.js",
   "scripts": {
     "start": "node dev-server.js",
-    "server": "nodemon --watch client --watch server --ext js,jsx dev-server.js",
+    "server": "nodemon --debug --watch client --watch server --ext js,jsx dev-server.js",
     "server-dev": "webpack-dev-server --config webpack.config.dev.js --progress --colors --port 2992",
     "server-hot": "webpack-dev-server --config webpack.config.hot.js --hot --progress --colors --port 2992 --inline",
     "sources": "http-server -p 3001 .",
@@ -31,6 +31,7 @@
     "handlebars": "^3.0.3",
     "hapi": "^8.4.0",
     "isomorphic-fetch": "^2.0.2",
+    "lodash": "^3.10.0",
     "q": "^1.3.0",
     "radium": "^0.13.4",
     "react": "^0.13.2",

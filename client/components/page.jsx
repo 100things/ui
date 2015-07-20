@@ -1,5 +1,6 @@
 import React from 'react/addons';
 import List from './List';
+import Camera from './Camera';
 
 var data = {
   things: [
@@ -12,7 +13,10 @@ var data = {
 export default class Page extends React.Component {
   render () {
     return (
-      <List things={data.things} />
+      <div>
+        <Camera sourceQuery={ { facing: 'environment' } } />
+        <List things={data.things} />
+      </div>
     );
   }
 }
