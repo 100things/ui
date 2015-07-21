@@ -1,6 +1,7 @@
 import React from 'react/addons';
 import List from './List';
 import Camera from './Camera';
+import Button from './Button';
 
 var data = {
   things: [
@@ -20,7 +21,7 @@ export default class Page extends React.Component {
     return (
       <div>
         <Camera ref="camera" sourceQuery={ { facing: 'environment' } } />
-        <button onClick={this.screenshot.bind(this)}>Take Picture</button>
+        <Button onClick={this.screenshot.bind(this)}>Take Picture</Button>
         <List things={data.things} />
       </div>
     );

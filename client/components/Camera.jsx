@@ -96,17 +96,17 @@ class Webcam extends React.Component {
     var ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    return canvas.toDataURL('image/webp');
+    return canvas.toDataURL(this.props.imageType);
   }
 
   render () {
     return (
       <video
         autoPlay
-        ref="video"
-        width={this.props.width}
         height={this.props.height}
+        ref="video"
         src={this.state.src}
+        width={this.props.width}
         ></video>
     );
   }
@@ -114,7 +114,8 @@ class Webcam extends React.Component {
 
 Webcam.defaultProps = {
   height: 480,
-  width: 640
+  width: 640,
+  imageType: 'image/png'
 };
 
 Webcam.mountedInstances = [];
