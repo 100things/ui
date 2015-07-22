@@ -1,18 +1,8 @@
 import React from 'react';
-
-import mui from 'material-ui';
 import {Card, CardMedia, CardTitle} from 'material-ui';
-const ThemeManager = new mui.Styles.ThemeManager();
 
 
-class Thing extends React.Component {
-
-  getChildContext () {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
-  }
-
+export default class Thing extends React.Component {
   render () {
     return (
       <Card>
@@ -23,9 +13,3 @@ class Thing extends React.Component {
     );
   }
 }
-
-Thing.childContextTypes = {
-  muiTheme: React.PropTypes.object
-};
-
-export default Thing;
