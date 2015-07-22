@@ -1,12 +1,31 @@
 import React from 'react';
 
-export default class Thing extends React.Component {
+import mui from 'material-ui';
+import {Card, CardMedia, CardTitle} from 'material-ui';
+const ThemeManager = new mui.Styles.ThemeManager();
+
+
+class Thing extends React.Component {
+
+  getChildContext () {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  }
+
   render () {
     return (
-      <div>
-        <img src={this.props.image} />
-        <h4>{this.props.name}</h4>
-      </div>
+      <Card>
+        <CardMedia overlay={<CardTitle title={this.props.name}/>}>
+          <img src={this.props.image} />
+        </CardMedia>
+      </Card>
     );
   }
 }
+
+Thing.childContextTypes = {
+  muiTheme: React.PropTypes.object
+};
+
+export default Thing;
