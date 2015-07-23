@@ -1,9 +1,7 @@
 import React from 'react/addons';
-import List from './List';
-import Camera from './Camera';
-
+import RouteHandler from 'react-router';
 import mui from 'material-ui';
-import {RaisedButton} from 'material-ui';
+
 const ThemeManager = new mui.Styles.ThemeManager();
 
 var data = {
@@ -14,31 +12,23 @@ var data = {
   ]
 };
 
-class Page extends React.Component {
+class Layout extends React.Component {
   getChildContext () {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
   }
-
-  screenshot () {
-    var screenshot = this.refs.camera.getScreenshot();
-    console.log(screenshot);
-  }
-
   render () {
     return (
       <div>
-        <Camera ref="camera" sourceQuery={ { facing: 'environment' } } />
-        <RaisedButton label="Take Picture" onClick={this.screenshot.bind(this)} />
-        <List things={data.things} />
+        <RouteHandler {...this.props} />
       </div>
     );
   }
 }
 
-Page.childContextTypes = {
+Layout.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
-export default Page;
+export default Layout;
