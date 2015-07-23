@@ -1,5 +1,5 @@
 import React from 'react/addons';
-import List from './List';
+import List from '../Components/List';
 
 export default class Browse extends React.Component {
   render () {

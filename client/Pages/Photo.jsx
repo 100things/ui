@@ -1,5 +1,5 @@
 import React from 'react/addons';
-import Camera from './Camera';
+import Camera from '../Components/Camera';
 import {RaisedButton} from 'material-ui';
 
 export default class Page extends React.Component {

@@ -6,7 +6,7 @@ var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 module.exports = {
   cache: true,
   context: path.join(__dirname, 'client'),
-  entry: './Entry.jsx',
+  entry: './Entry.js',
   output: {
     path: path.join(__dirname, 'dist/js'),
     filename: 'bundle.[hash].js'
