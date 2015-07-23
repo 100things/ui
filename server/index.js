@@ -19,7 +19,7 @@ exports.register = function (plugin, options, next) {
         }
       }
     },
-    { method: 'GET', path: '/', config: Controllers.Pages.index }
+    { method: 'GET', path: '/{params*}', config: Controllers.Pages.index }
   ]);
 
   next();
