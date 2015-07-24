@@ -1,4 +1,4 @@
-import source from '../sources/Things';
+import source from '../sources/things';
 
 export default class ThingsStore {
   constructor () {

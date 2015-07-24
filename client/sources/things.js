@@ -1,4 +1,4 @@
-import { fetch } from '../api/Things';
+import { fetch } from '../api/things';
 
 export default (alt) => {
   return {

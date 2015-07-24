@@ -1,7 +1,7 @@
 import Alt from 'alt';
 
-import ThingsActions from './actions/Things';
-import ThingsStore from './stores/Things';
+import ThingsActions from './actions/things';
+import ThingsStore from './stores/things';
 
 export default class Flux extends Alt {
   constructor (config = {}) {
