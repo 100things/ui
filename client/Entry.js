@@ -1,9 +1,12 @@
-import React from 'react/addons';
 import Router from 'react-router';
 import Routes from './Routes';
+import AltIso from 'alt/utils/AltIso';
+import Flux from './alt';
 
-const rootEl = document.querySelector('.content');
+const flux = new Flux();
 
-Router.run(Routes, Router.HistoryLocation, (Handler, state) => {
-    React.render(<Handler {...state} />, rootEl);
+Router.run(Routes, Router.HistoryLocation, (Handler) => {
+    AltIso.render(flux, Handler, {
+      flux: flux
+    });
 });

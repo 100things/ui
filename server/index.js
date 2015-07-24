@@ -19,7 +19,8 @@ exports.register = function (plugin, options, next) {
         }
       }
     },
-    { method: 'GET', path: '/{params*}', config: Controllers.Pages.index }
+    { method: 'GET', path: '/{params*}', config: Controllers.Pages.index },
+    { method: 'GET', path: '/api/things', config: Controllers.Things.fetch }
   ]);
 
   next();

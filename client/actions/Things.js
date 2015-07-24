@@ -1,1 +1,9 @@
-export default (alt) => alt.generateActions('init', 'create', 'update', 'remove');
+export default class ThingsActions {
+  constructor () {
+    this.generateActions(
+      'fetch',
+      'update',
+      'error'
+    );
+  }
+}

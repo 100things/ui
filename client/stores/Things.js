@@ -1,36 +1,33 @@
+import source from '../sources/Things';
+
 export default class ThingsStore {
-  constructor (actions) {
-    this.bindActions(actions);
+  constructor () {
+    this.bindActions(this.alt.getActions('ThingsActions'));
+    this.registerAsync(source(this.alt));
+
+    this.things = [];
+    this.loading = false;
+    this.error = '';
   }
 
-  init (data) {
-    this.setState(data || { things: [] });
-  }
-
-  create (name, image) {
-    const things = this.things;
-
+  onUpdate (things) {
     this.setState({
-      things: things.concat({
-        name: name,
-        image: image
-      })
+      things: things,
+      loading: false
     });
   }
 
-  update ({id, name}) {
-    const things = this.things;
-
-    things[id].name = name;
-
-    this.setState({things});
+  onFetch () {
+    this.setState({
+      error: null,
+      loading: true
+    });
   }
 
-  remove (id) {
-    const things = this.things;
-
+  onError (err) {
     this.setState({
-      things: things.slice(0, id).concat(things.slice(id + 1))
+      error: err.message || err.toString(),
+      loading: false
     });
   }
 }
