@@ -11,8 +11,8 @@ export default class Page extends React.Component {
   render () {
     return (
       <div>
-        <Camera ref="camera" sourceQuery={ { facing: 'environment' } } />
-        <RaisedButton label="Take Picture" onClick={this.screenshot.bind(this)} />
+        <Camera ref='camera' sourceQuery={ { facing: 'environment' } } />
+        <RaisedButton label='Take Picture' onClick={this.screenshot.bind(this)} />
       </div>
     );
   }

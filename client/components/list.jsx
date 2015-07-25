@@ -1,6 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
-import Thing from './thing';
+import Thing from './thing-list-item';
 import AltIso from 'alt/utils/AltIso';
 
 const styles = {
@@ -10,6 +10,7 @@ const styles = {
   },
   thing: {
     flex: 1,
+    padding: '1%',
     minWidth: '100%',
     '@media (min-width: 992px)': {
       minWidth: '33.333%'

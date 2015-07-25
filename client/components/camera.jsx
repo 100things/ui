@@ -104,7 +104,7 @@ class Webcam extends React.Component {
       <video
         autoPlay
         height={this.props.height}
-        ref="video"
+        ref='video'
         src={this.state.src}
         width={this.props.width}
         ></video>
