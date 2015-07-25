@@ -6,13 +6,12 @@ import request from 'superagent';
 export default {
   fetch: () => new Promise((resolve, reject) => {
     request
-    .get('/api/things')
+    .get('http://localhost:3000/api/things')
     .end((err, res) => {
-      console.log(res);
       if (err) {
         return reject(err);
       }
-      return resolve(res);
+      return resolve(res.body);
     });
   })
 };

@@ -7,7 +7,7 @@ export default (alt) => {
         return fetch(state);
       },
       loading: alt.actions.ThingsActions.fetch,
-      success: alt.actions.ThingsActions.success,
+      success: alt.actions.ThingsActions.update,
       error: alt.actions.ThingsActions.error
     }
   };
