@@ -43,16 +43,17 @@ exports.index = {
             width: serverWidth
           }
         ).then(function (markup) {
+          if (markup.err) {
+            console.log(markup.err);
+          }
           viewData.content = markup.html;
 
           reply.view('index', viewData);
         });
 
       } catch(e) {
-        /*eslint-disable no-console*/
         console.log(e.stack);
         console.log(e);
-        /*eslint-enable no-console*/
         throw e;
       }
 
