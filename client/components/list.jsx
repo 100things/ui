@@ -1,6 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
-import Thing from './thing';
+import Thing from './thing-list-item';
 import AltIso from 'alt/utils/AltIso';
 
 const styles = {
@@ -10,6 +10,7 @@ const styles = {
   },
   thing: {
     flex: 1,
+    padding: '1%',
     minWidth: '100%',
     '@media (min-width: 992px)': {
       minWidth: '33.333%'
@@ -21,7 +22,24 @@ const styles = {
 };
 
 @Radium
-class List extends React.Component {
+export default class List extends React.Component {
+  constructor (props) {
+    super(props);
+    this.store = props.flux.stores.ThingsStore;
+    this.store.fetch();
+  }
+
+  componentDidMount () {
+    this.store.listen(this._onChange);
+  }
+
+  componentWillUnmount () {
+    this.store.unlisten(this._onChange);
+  }
+
+  _onChange = (state) => {
+    this.setState(state);
+  }
 
   render () {
     return (
@@ -40,9 +58,3 @@ class List extends React.Component {
     );
   }
 }
-
-export default AltIso.define(props => {
-  return Promise.all([
-    props.flux.stores.ThingsStore.fetch()
-    ]);
-  }, List);

@@ -63,7 +63,7 @@ class Webcam extends React.Component {
 
   componentWillUnmount () {
     if (this.state.hasUserMedia) {
-      window.URL.revokeObjectUrl(this.state.src);
+      window.URL.revokeObjectURL(this.state.src);
     }
   }
 
@@ -104,7 +104,7 @@ class Webcam extends React.Component {
       <video
         autoPlay
         height={this.props.height}
-        ref="video"
+        ref='video'
         src={this.state.src}
         width={this.props.width}
         ></video>
