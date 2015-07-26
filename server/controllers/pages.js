@@ -22,7 +22,7 @@ exports.index = {
     }
 
     // Send to react router.
-    Router.run(routes, req.url.path || '/', function (Handler) {
+    Router.run(routes, req.url.path || '/', function (Handler, route) {
       var flux = new Flux();
 
       try {
@@ -39,6 +39,7 @@ exports.index = {
           flux,
           Handler,
           {
+            route: route,
             flux: flux,
             width: serverWidth
           }

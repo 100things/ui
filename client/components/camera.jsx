@@ -63,7 +63,7 @@ class Webcam extends React.Component {
 
   componentWillUnmount () {
     if (this.state.hasUserMedia) {
-      window.URL.revokeObjectUrl(this.state.src);
+      window.URL.revokeObjectURL(this.state.src);
     }
   }
 

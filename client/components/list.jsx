@@ -23,6 +23,23 @@ const styles = {
 
 @Radium
 class List extends React.Component {
+  constructor (props) {
+    super(props);
+    this.store = props.flux.stores.ThingsStore;
+    this.store.fetch();
+  }
+
+  componentDidMount () {
+    this.store.listen(this._onChange);
+  }
+
+  componentWillUnmount () {
+    this.store.unlisten(this._onChange);
+  }
+
+  _onChange = (state) => {
+    this.setState(state);
+  }
 
   render () {
     return (

@@ -1,7 +1,8 @@
 import React from 'react/addons';
 import { RouteHandler, Link } from 'react-router';
 import mui from 'material-ui';
-import { AppBar, FlatButton, IconButton, FontIcon } from 'material-ui';
+import { AppBar, FlatButton, IconButton } from 'material-ui';
+import HomeIcon from 'material-ui/lib/svg-icons/action/home';
 
 const ThemeManager = new mui.Styles.ThemeManager();
 
@@ -16,8 +17,12 @@ class Layout extends React.Component {
       <div>
         <AppBar
           iconElementLeft={
-            <IconButton tooltip="Sort" disabled={true}>
-              <FontIcon className="muidocs-icon-custom-sort"/>
+            <IconButton
+              linkButton={true}
+              containerElement={
+                <Link to='root' />
+              }>
+              <HomeIcon />
             </IconButton>
           }
           iconElementRight={
