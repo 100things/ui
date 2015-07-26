@@ -22,7 +22,7 @@ const styles = {
 };
 
 @Radium
-class List extends React.Component {
+export default class List extends React.Component {
   constructor (props) {
     super(props);
     this.store = props.flux.stores.ThingsStore;
@@ -58,9 +58,3 @@ class List extends React.Component {
     );
   }
 }
-
-export default AltIso.define(props => {
-  return Promise.all([
-    props.flux.stores.ThingsStore.fetch()
-    ]);
-  }, List);
