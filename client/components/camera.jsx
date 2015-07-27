@@ -86,9 +86,11 @@ function hasGetUserMedia () {
 
       var video = this.refs.video.getDOMNode();
       var canvas = document.createElement('canvas');
+      var multiplier = (this.props.imageWidth ||
+         this.props.width) / this.props.width;
 
-      canvas.height = video.clientHeight;
-      canvas.width = video.clientWidth;
+      canvas.height = video.clientHeight * multiplier;
+      canvas.width = video.clientWidth * multiplier;
 
       var ctx = canvas.getContext('2d');
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -112,7 +114,8 @@ function hasGetUserMedia () {
   Webcam.defaultProps = {
     height: 480,
     width: 640,
-    imageType: 'image/png'
+    imageType: 'image/png',
+    imageWidth: 1024
   };
 
   export default Webcam;
