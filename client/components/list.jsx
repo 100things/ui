@@ -1,7 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
 import Thing from './thing-list-item';
-import AltIso from 'alt/utils/AltIso';
 
 const styles = {
   list: {

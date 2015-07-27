@@ -1,6 +1,5 @@
 import React from 'react/addons';
 import Camera from '../components/camera';
-import {RaisedButton} from 'material-ui';
 
 export default class Page extends React.Component {
   screenshot () {
@@ -12,7 +11,7 @@ export default class Page extends React.Component {
     return (
       <div>
         <Camera ref='camera' sourceQuery={ { facing: 'environment' } } />
-        <RaisedButton label='Take Picture' onClick={this.screenshot.bind(this)} />
+        <button onClick={ this.screenshot.bind(this) }>Take Picture</button>
       </div>
     );
   }
