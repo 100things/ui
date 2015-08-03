@@ -115,7 +115,7 @@ function hasGetUserMedia () {
     height: 480,
     width: 640,
     imageType: 'image/png',
-    imageWidth: 1024
+    imageWidth: 320
   };
 
   export default Webcam;
