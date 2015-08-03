@@ -4,7 +4,7 @@ export default (alt) => {
   return {
     fetch: {
       remote (state) {
-        return fetch(state);
+        return fetch(state).then(res => res.data);
       },
       local (state) {
         // TODO: Implement cache

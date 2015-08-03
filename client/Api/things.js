@@ -1,17 +1,4 @@
-// Polyfill for promises in browser
-require('es6-promise').polyfill();
-
-import request from 'superagent';
-
+import request from 'axios';
 export default {
-  fetch: () => new Promise((resolve, reject) => {
-    request
-    .get('/api/things')
-    .end((err, res) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(res.body);
-    });
-  })
+  fetch: () => request.get('/api/things')
 };
