@@ -2,9 +2,15 @@ import React from 'react/addons';
 import Camera from '../components/camera';
 
 export default class Page extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {};
+    this.actions = props.flux.actions.CameraActions;
+  }
+  
   screenshot () {
     var screenshot = this.refs.camera.getScreenshot();
-    console.log(screenshot);
+    this.actions.picture(screenshot);
   }
 
   render () {

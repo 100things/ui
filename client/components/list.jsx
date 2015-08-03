@@ -25,7 +25,8 @@ export default class List extends React.Component {
   constructor (props) {
     super(props);
     this.store = props.flux.stores.ThingsStore;
-    this.store.fetch();
+    this.actions = props.flux.actions.ThingsActions;
+    this.actions.readAll();
   }
 
   componentDidMount () {
@@ -43,7 +44,7 @@ export default class List extends React.Component {
   render () {
     return (
       <div style={ styles.list }>
-        { this.props.flux.stores.ThingsStore.getState().things.map((thing, i) =>
+        { this.store.getState().things.map((thing, i) =>
           <div
             key={ 'thing-' + thing.id }
             style={ styles.thing }>
