@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dev-server.js",
   "scripts": {
-    "start": "node dev-server.js",
+    "start": "npm run dev",
     "server": "nodemon --debug --watch client --watch server --ext js,jsx dev-server.js",
     "server-dev": "webpack-dev-server --config webpack.config.dev.js --progress --colors --port 2992",
     "server-hot": "webpack-dev-server --config webpack.config.hot.js --hot --progress --colors --port 2992 --inline",
