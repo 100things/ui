@@ -1,64 +1,42 @@
-import { read, create, update, del } from '../api/things';
+import { UPDATE } from '../constants/things';
+import { start, success, fail } from './request';
+import api from '../api/things';
 
-export default class ThingsActions {
-  constructor () {
-    this.generateActions(
-      'update'
-    );
-  }
+export function update (things) {
+  return {
+    type: UPDATE,
+    things
+  };
+}
 
-  async readAll () {
-    try {
-      this.alt.getActions('RequestActions').start();
-      const { data } = await read();
-      this.alt.getActions('RequestActions').success();
-      return this.actions.update(data);
-    } catch (error) {
-      return this.alt.getActions('RequestActions').fail();
-    }
+async function handleAsync (action, dispatch) {
+  try {
+    dispatch(start());
+    const { data } = await action();
+    dispatch(success());
+    dispatch(update(data));
+  } catch (error) {
+    dispatch(fail(error));
   }
+}
 
-  async read (id) {
-    try {
-      this.alt.getActions('RequestActions').start();
-      const { data } = await read(id);
-      this.alt.getActions('RequestActions').success();
-      return this.actions.update(data);
-    } catch (error) {
-      return this.alt.getActions('RequestActions').fail();
-    }
-  }
 
-  async create (thing) {
-    try {
-      this.alt.getActions('RequestActions').start();
-      const { data } = await create(thing);
-      this.alt.getActions('RequestActions').success();
-      return this.actions.update(data);
-    } catch (error) {
-      return this.alt.getActions('RequestActions').fail();
-    }
-  }
+export function readAll () {
+  return handleAsync.bind(null, api.read);
+}
 
-  async update (thing) {
-    try {
-      this.alt.getActions('RequestActions').start();
-      const { data } = await update(thing);
-      this.alt.getActions('RequestActions').success();
-      return this.actions.update(data);
-    } catch (error) {
-      return this.alt.getActions('RequestActions').fail();
-    }
-  }
+export function read (id) {
+  return handleAsync.bind(api.read.bind(null, id));
+}
 
-  async delete (thing) {
-    try {
-      this.alt.getActions('RequestActions').start();
-      const { data } = await del(thing);
-      this.alt.getActions('RequestActions').success();
-      return this.actions.update(data);
-    } catch (error) {
-      return this.alt.getActions('RequestActions').fail();
-    }
-  }
+export function create (thing) {
+  return handleAsync.bind(api.create.bind(null, thing));
+}
+
+export function update (thing) {
+  return handleAsync.bind(api.update.bind(null, thing));
+}
+
+export function del (thing) {
+  return handleAsync.bind(api.del.bind(null, thing));
 }

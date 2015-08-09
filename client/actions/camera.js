@@ -1,7 +1,7 @@
-export default class CameraActions {
-  constructor () {
-    this.generateActions(
-      'picture'
-    );
-  }
+import { PICTURE } from '../constants/camera';
+
+export function picture () {
+  return {
+    type: PICTURE
+  };
 }
