@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class Thing extends React.Component {
+export default class ThingListItem extends React.Component {
   render () {
     return (
       <div>

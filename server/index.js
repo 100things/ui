@@ -20,7 +20,8 @@ exports.register = function (plugin, options, next) {
       }
     },
     { method: 'GET', path: '/{params*}', config: Controllers.Pages.index },
-    { method: 'GET', path: '/api/things', config: Controllers.Things.fetch }
+    { method: 'GET', path: '/api/things', config: Controllers.Things.fetch },
+    { method: 'POST', path: '/api/things', config: Controllers.Things.create }
   ]);
 
   next();
