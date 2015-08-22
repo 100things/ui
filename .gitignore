@@ -7,6 +7,9 @@ bower_components
 node_modules
 npm-debug\.log
 
+# Secret
+server/**/db.json
+
 # Build
 dist
 coverage
