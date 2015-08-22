@@ -39,7 +39,6 @@ export default class CreateThing extends React.Component {
           <Thing save={ this.update.bind(this) }/>
 
         </AltContainer>
-        <Link to='camera'>To Camera</Link>
         <button onClick={ this.save.bind(this) }>Create Thing</button>
         <button onClick={ this.clear.bind(this) }>Clear</button>
       </div>
