@@ -10,12 +10,12 @@ const styles = {
   thing: {
     flex: 1,
     padding: '1%',
-    minWidth: '100%',
+    minWidth: '50%',
     '@media (min-width: 992px)': {
-      minWidth: '33.333%'
+      minWidth: '20%'
     },
     '@media (min-width: 1200px)': {
-      minWidth: '25%'
+      minWidth: '10%'
     }
   }
 };

@@ -6,13 +6,13 @@ const styles = {
   container: {
     base: {
       background: '#fefefe',
-      border: '1px solid #f0f0f0',
       boxShadow: 'rgba(0, 0, 0, 0.0470588) 0px 2px 3px 0px',
       borderRadius: '0.2em',
       borderLeft: '1px solid #f5f5f5',
       borderTop: '1px solid #f4f4f4',
       borderRight: '1px solid #fafafb',
-      borderBottom: '1px solid #e8e8e8'
+      borderBottom: '1px solid #e8e8e8',
+      overflow: 'hidden'
     }
   },
   content: {
@@ -34,9 +34,9 @@ export default class ThingListItem extends React.Component {
         <div style={ styles.content.container.base }>
           <h4>{ this.props.name }</h4>
           <div>
-          { this.props.tags.map((tag, i) =>
+          { Array.isArray(this.props.tags) ? this.props.tags.map((tag, i) =>
             <Tag key={ `tag-${i}` }>{tag}</Tag>
-          ) }
+          ) : '' }
           </div>
         </div>
       </div>
