@@ -18,26 +18,46 @@ const styles = {
   content: {
     container: {
       base: {
-        padding: '1em'
+        padding: '0 1rem'
       }
     }
+  },
+  title: {
+    margin: 0,
+    fontSize: '1rem',
+    fontWeight: 'normal',
+    background: '#1891FA',
+    padding: '1rem',
+    color: '#fff',
+    textTransform: 'uppercase'
+  },
+  tagsList: {
+    padding: '1rem 0'
   }
 };
 
 @Radium
-
 export default class ThingListItem extends React.Component {
+  renderTags (tags) {
+    if (Array.isArray(tags) && tags.length) {
+      return (
+        <div style={ styles.tagsList }>
+          { this.props.tags.map((tag, i) =>
+            <Tag key={ `tag-${i}` }>{tag}</Tag>
+          ) }
+        </div>
+      );
+    }
+    return '';
+  }
+
   render () {
     return (
       <div style={ styles.container.base }>
+        <h4 style={ styles.title }>{ this.props.name }</h4>
         <img src={ this.props.image } />
         <div style={ styles.content.container.base }>
-          <h4>{ this.props.name }</h4>
-          <div>
-          { Array.isArray(this.props.tags) ? this.props.tags.map((tag, i) =>
-            <Tag key={ `tag-${i}` }>{tag}</Tag>
-          ) : '' }
-          </div>
+          { this.renderTags(this.props.tags) }
         </div>
       </div>
     );

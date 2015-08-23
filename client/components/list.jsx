@@ -1,26 +1,12 @@
 import React from 'react';
-import Radium from 'radium';
+import MasonryFactory from 'react-masonry-component';
 import Thing from './thing-list-item';
+var Masonry = MasonryFactory(React);
 
-const styles = {
-  list: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  },
-  thing: {
-    flex: 1,
-    padding: '1%',
-    minWidth: '50%',
-    '@media (min-width: 992px)': {
-      minWidth: '20%'
-    },
-    '@media (min-width: 1200px)': {
-      minWidth: '10%'
-    }
-  }
+const masonryOptions = {
+  transitionDuration: 0
 };
 
-@Radium
 export default class List extends React.Component {
   constructor (props) {
     super(props);
@@ -29,18 +15,17 @@ export default class List extends React.Component {
 
   render () {
     return (
-      <div style={ styles.list }>
+      <Masonry options={ masonryOptions }>
         { this.props.things.map((thing, i) =>
           <div
-            key={ 'thing-' + thing.id }
-            style={ styles.thing }>
+            key={ 'thing-' + thing.id }>
             <Thing
               index={ i }
               { ...thing }
               />
           </div>
         ) }
-      </div>
+      </Masonry>
     );
   }
 }
