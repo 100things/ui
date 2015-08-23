@@ -1,38 +1,36 @@
 import React from 'react';
-import Tag from './tag';
+import TagList from './tag-list';
 import Radium from 'radium';
 
 const styles = {
   container: {
-    base: {
-      background: '#fefefe',
-      boxShadow: 'rgba(0, 0, 0, 0.0470588) 0px 2px 3px 0px',
-      borderRadius: '0.2em',
-      borderLeft: '1px solid #f5f5f5',
-      borderTop: '1px solid #f4f4f4',
-      borderRight: '1px solid #fafafb',
-      borderBottom: '1px solid #e8e8e8',
-      overflow: 'hidden'
-    }
+    background: '#fefefe',
+    borderBottom: '1px solid rgba(0,0,0,0.2)',
+    borderLeft: '1px solid rgba(0,0,0,0.1)',
+    borderRadius: '0.2rem',
+    borderRight: '1px solid rgba(0,0,0,0.08)',
+    borderTop: '1px solid rgba(0,0,0,0.15)',
+    boxShadow: 'rgba(0,0,0,0.0470588) 0px 2px 3px 0px',
+    overflow: 'hidden'
   },
   content: {
     container: {
-      base: {
-        padding: '0 1rem'
-      }
+      padding: '1rem'
+    },
+    title: {
+      color: '#656D77',
+      fontSize: '1rem',
+      fontWeight: 'normal',
+      margin: 0
+    },
+    image: {
+      display: 'block'
+    },
+    tagsList: {
+      marginTop: '1rem',
+      paddingTop: '1rem',
+      borderTop: '1px solid #E9EBEF'
     }
-  },
-  title: {
-    margin: 0,
-    fontSize: '1rem',
-    fontWeight: 'normal',
-    background: '#1891FA',
-    padding: '1rem',
-    color: '#fff',
-    textTransform: 'uppercase'
-  },
-  tagsList: {
-    padding: '1rem 0'
   }
 };
 
@@ -41,10 +39,8 @@ export default class ThingListItem extends React.Component {
   renderTags (tags) {
     if (Array.isArray(tags) && tags.length) {
       return (
-        <div style={ styles.tagsList }>
-          { this.props.tags.map((tag, i) =>
-            <Tag key={ `tag-${i}` }>{tag}</Tag>
-          ) }
+        <div style={ styles.content.tagsList }>
+          <TagList tags={ tags } />
         </div>
       );
     }
@@ -53,10 +49,10 @@ export default class ThingListItem extends React.Component {
 
   render () {
     return (
-      <div style={ styles.container.base }>
-        <h4 style={ styles.title }>{ this.props.name }</h4>
-        <img src={ this.props.image } />
-        <div style={ styles.content.container.base }>
+      <div style={ styles.container }>
+        <img style={ styles.content.image } src={ this.props.image } />
+        <div style={ styles.content.container }>
+          <h2 style={ styles.content.title }>{ this.props.name }</h2>
           { this.renderTags(this.props.tags) }
         </div>
       </div>
