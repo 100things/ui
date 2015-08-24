@@ -3,15 +3,27 @@ import Radium from 'radium';
 
 const styles = {
   base: {
-    borderRadius: '0.5em',
-    fontSize: '.8rem',
-    padding: '0.25em 0.4em',
-    display: 'inline-block',
-    color: '#c0c0c0',
     border: '1px solid #f0f0f0',
-    whiteSpace: 'no-wrap',
+    borderRadius: '0.5em',
+    color: '#c0c0c0',
+    display: 'inline-block',
+    fontSize: '.8rem',
+    lineHeight: 1,
     marginRight: '0.5em',
-    lineHeight: 1
+    padding: '0.25em 0.4em',
+    whiteSpace: 'no-wrap',
+    ':hover': {
+      backgroundColor: '#1891FA',
+      borderColor: '#1891FA',
+      color: '#fff',
+      cursor: 'pointer'
+    }
+  },
+  options: {
+    borderLeft: '1px solid #fff',
+    display: 'inline-block',
+    marginLeft: '0.5em',
+    paddingLeft: '0.5em'
   }
 };
 
@@ -21,10 +33,21 @@ export default class Tag extends React.Component {
     super(props);
   }
 
+  edit () {
+  }
+
   render () {
     return (
-      <span style={ styles.base }>
+      <span key='tag' style={ styles.base }>
         { this.props.children }
+        { Radium.getState(this.state, 'tag', ':hover') ? (
+          <span style={ styles.options }>
+            <i
+              onClick={ this.edit.bind(this) }
+              className='fa fa-pencil'
+            ></i> <i className="fa fa-times"></i>
+          </span>
+        ) : null }
       </span>
     );
   }

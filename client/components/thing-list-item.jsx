@@ -1,6 +1,7 @@
 import React from 'react';
 import TagList from './tag-list';
 import Radium from 'radium';
+import MediaQueries from '../helpers/media-queries';
 
 const styles = {
   container: {
@@ -11,7 +12,17 @@ const styles = {
     borderRight: '1px solid rgba(0,0,0,0.08)',
     borderTop: '1px solid rgba(0,0,0,0.15)',
     boxShadow: 'rgba(0,0,0,0.0470588) 0px 2px 3px 0px',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    margin: '0.5%',
+    [MediaQueries.mobile]: {
+      width: '99%'
+    },
+    [MediaQueries.tablet]: {
+      width: '49%'
+    },
+    [MediaQueries.desktop]: {
+      width: '24%'
+    }
   },
   content: {
     container: {
@@ -24,7 +35,8 @@ const styles = {
       margin: 0
     },
     image: {
-      display: 'block'
+      display: 'block',
+      width: '100%'
     },
     tagsList: {
       marginTop: '1rem',
@@ -36,24 +48,15 @@ const styles = {
 
 @Radium
 export default class ThingListItem extends React.Component {
-  renderTags (tags) {
-    if (Array.isArray(tags) && tags.length) {
-      return (
-        <div style={ styles.content.tagsList }>
-          <TagList tags={ tags } />
-        </div>
-      );
-    }
-    return '';
-  }
-
   render () {
     return (
       <div style={ styles.container }>
         <img style={ styles.content.image } src={ this.props.image } />
         <div style={ styles.content.container }>
           <h2 style={ styles.content.title }>{ this.props.name }</h2>
-          { this.renderTags(this.props.tags) }
+          <div style={ styles.content.tagsList }>
+            <TagList tags={ this.props.tags } />
+          </div>
         </div>
       </div>
     );

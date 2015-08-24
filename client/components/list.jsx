@@ -17,13 +17,11 @@ export default class List extends React.Component {
     return (
       <Masonry options={ masonryOptions }>
         { this.props.things.map((thing, i) =>
-          <div
-            key={ 'thing-' + thing.id }>
-            <Thing
-              index={ i }
-              { ...thing }
-              />
-          </div>
+          <Thing
+            key={ 'thing-' + thing.id }
+            index={ i }
+            { ...thing }
+          />
         ) }
       </Masonry>
     );
