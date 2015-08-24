@@ -33,21 +33,10 @@ export default class Tag extends React.Component {
     super(props);
   }
 
-  edit () {
-  }
-
   render () {
     return (
       <span key='tag' style={ styles.base }>
         { this.props.children }
-        { Radium.getState(this.state, 'tag', ':hover') ? (
-          <span style={ styles.options }>
-            <i
-              onClick={ this.edit.bind(this) }
-              className='fa fa-pencil'
-            ></i> <i className="fa fa-times"></i>
-          </span>
-        ) : null }
       </span>
     );
   }
